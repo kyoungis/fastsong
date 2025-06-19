@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8f9fa;
+  font-family: "Noto Sans KR", Arial, sans-serif, 'Malgun Gothic';
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container {
+  text-align: center;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+  height: 100vh;
+  width: 100vh;
+  border-radius: 5px;
+   
+  background-image: url('index.png');
+  background-position: center; 
+  background-size: cover;
+}
+
+.main-title1 {
+  font-family: Arial, sans-serif, 'Malgun Gothic';
+  font-weight: bold;
+  font-size: 5rem;
+  color: #333;
+  margin-top: 220px;
+  margin-bottom: 30px;
+  text-shadow: 0px 0px 10px rgba(181, 181, 181, 0.5);
+}
+
+.main-title2 {
+  font-family: Arial, sans-serif, 'Malgun Gothic';
+  font-weight: bold;
+  font-size: 4rem;
+  color: #333;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  text-shadow: 0px 0px 10px rgba(181, 181, 181, 0.5);
+}
+
+.container {
+  padding:20px;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    background-repeat: no-repeat;
+  }
+  .main-title2 {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }   
+}

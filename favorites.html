@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="basic.css">
+    <link rel="stylesheet" href="navibar.css">
+    <link rel="stylesheet" href="station-review.css">
+    <title>급하송</title>
+</head>
+<body>
+<div class="main-container">
+  <!-- 탭 메뉴 -->
+  <div class="tabs">
+    <div class="tab" onclick="location.href='section-select.html'">지도 보기</div>
+    <div class="tab" onclick="location.href='review.html'" >역 후기</div>
+    <div class="tab active" onclick="location.href='favorites.html'">즐겨찾는 역</div>
+    <div class="tab" onclick="location.href='profile.html'">나의 정보</div>
+  </div>
+
+  <div class="container">
+    <input id="searchInput" class="search" placeholder="역명을 검색하세요...">
+    <div id="stationGrid" class="grid"></div>
+    <div id="emptyMessage" class="empty" style="display:none;">
+        아직 즐겨찾는 역이 없습니다.<br>하트 버튼을 클릭해 주세요.
+    </div>
+  </div>
+  <script type="module">
+    import { stations, getFavorites, renderStations } from './func.js';
+
+    function renderFavoriteStations(list) {
+      const grid = document.getElementById('stationGrid');
+      const emptyMessage = document.getElementById('emptyMessage');
+      if (list.length === 0) {
+        emptyMessage.style.display = '';
+      } else {
+        emptyMessage.style.display = 'none';
+      }
+      renderStations(list);
+      attachHeartEvents(showFavorites);
+    }
+
+    function showFavorites() {
+      const favorites = getFavorites();
+      const favoriteStations = stations.filter(station => favorites.includes(station.name));
+      renderFavoriteStations(favoriteStations);
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const term = this.value.trim().toLowerCase();
+      const favorites = getFavorites();
+      const favoriteStations = stations.filter(station => favorites.includes(station.name));
+      const filtered = favoriteStations.filter(station =>
+        station.name.toLowerCase().includes(term)
+      );
+      renderFavoriteStations(filtered);
+    });
+
+    showFavorites();
+  </script>
+</body>
+</html>

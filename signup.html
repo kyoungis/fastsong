@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="basic.css">
+    <title>급하송</title>
+    <style>
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 17px;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 3px rgba(181, 181, 181, 0.5);
+        }
+        .signup-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #78C4A3;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+            box-shadow: 0px 0px 10px rgba(181, 181, 181, 0.5)            
+        }
+        .signup-button:hover {
+            opacity: 0.9;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h2 class="main-title1">회원가입</h2>
+        <form id="signupForm">
+            <div class="input-group">
+                <input type="text" id="userId" placeholder="아이디 입력" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="비밀번호 입력" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="confirmPassword" placeholder="비밀번호 확인" required>
+            </div>
+            <button type="submit" class="signup-button">회원가입</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userId = document.getElementById('userId').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+            
+            // 1. 필수 입력 확인
+            if (!userId || !password || !confirmPassword) {
+                alert('모든 필드를 입력해주세요.');
+                return;
+            }
+            
+            // 2. 비밀번호 일치 확인
+            if (password !== confirmPassword) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+
+            // 3. 기존 사용자 데이터 불러오기
+            const users = JSON.parse(localStorage.getItem('users')) || {};
+            
+            // 4. 아이디 중복 확인
+            if (users[userId]) {
+                alert('이미 존재하는 아이디입니다.');
+                return;
+            }
+
+            // 5. 회원 정보 저장
+            users[userId] = password;
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            alert('회원가입이 완료되었습니다.');
+            location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+.container { 
+    padding: 24px;
+    max-width: 800px;
+    margin: auto;
+}
+.search { 
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px; 
+}
+.card { 
+    background: #fff; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 16px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 12px; 
+}
+.heart { 
+    font-size: 20px; 
+    color: #ccc; 
+    cursor: pointer; 
+}
+.heart.active { 
+    color: #ff6b6b; 
+}
+.station-img { 
+    width: 100%; 
+    height: 120px; 
+    object-fit: cover;
+    object-position: top;
+    border-radius: 4px; 
+    margin-bottom: 12px; 
+}
+.rating { 
+    font-size: 14px; 
+    color: #666; 
+}
+.empty { 
+    text-align: center; 
+    color: #999; 
+    margin-top: 60px; 
+}

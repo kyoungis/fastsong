@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="basic.css">
+        <link rel="stylesheet" href="navibar.css">
+    <title>나의 정보</title>
+    <style>
+        .profile-header, .settings-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
+        }
+        .profile-info {
+            flex: 1;
+        }
+        .username, .section-title {
+            font-size: 25px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .user-stats {
+            display: flex;
+            gap: 20px;
+        }
+        .section-title {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #767676;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .form-group input {
+            width: 200%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #d9d9d9;
+            border-radius: 3px;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin: 0 0 10px 0;
+        }
+        .form-group button {
+            background-color: #78C4A3;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .form-group button:hover {
+            opacity: 0.7;   
+        }
+</style>
+</head>
+<body>
+<div class="main-container">
+    <div class="tabs">
+        <div class="tab" onclick="location.href='section-select.html'">지도 보기</div>
+        <div class="tab" onclick="location.href='review.html'">역 후기</div>
+        <div class="tab" onclick="location.href='favorites.html'">즐겨찾는 역</div>
+        <div class="tab active" onclick="location.href='profile.html'">나의 정보</div>
+    </div>
+
+    <div class="content">
+        <div class="profile-header">
+                <div class="profile-info">
+                <div class="username" id="displayUsername">noonsong</div>
+                <div class="user-stats"></div>
+            </div>
+        </div>
+        <div class="settings-section">
+            <h3 class="section-title">아이디 변경</h3>
+            <div class="form-group">
+                <input type="text" id="newUsername" placeholder="새 아이디를 입력하세요">
+                <button onclick="changeUsername()">확인</button>
+            </div>
+        </div>
+        <div class="settings-section">
+            <h3 class="section-title">비밀번호 변경</h3>
+            <div class="form-group">
+                <label>현재 비밀번호 입력</label>
+                <input type="password" id="currentPassword" placeholder="현재 비밀번호를 입력하세요">
+            </div>
+            <div class="form-group">
+                <label>새 비밀번호 입력</label>
+                <input type="password" id="newPassword" placeholder="새 비밀번호를 입력하세요">
+                <button onclick="changePassword()">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const username = localStorage.getItem('username') || 'noonsong';
+        document.getElementById('displayUsername').textContent = username;
+
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        document.getElementById('favoriteCount').textContent = favorites.length + '개';
+    });
+
+    function changeUsername() {
+        const newUsername = document.getElementById('newUsername').value;
+        if (!newUsername.trim()) {
+            alert('새 아이디를 입력해주세요.');
+            return;
+        }
+
+        localStorage.setItem('username', newUsername);
+        document.getElementById('displayUsername').textContent = newUsername;
+        document.getElementById('newUsername').value = '';
+        alert('아이디가 변경되었습니다.');
+    }
+
+    function changePassword() {
+        const currentPassword = document.getElementById('currentPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+
+        if (!currentPassword.trim()) {
+            alert('현재 비밀번호를 입력해주세요.');
+            return;
+        }
+
+        if (!newPassword.trim()) {
+            alert('새 비밀번호를 입력해주세요.');
+            return;
+        }
+
+        document.getElementById('currentPassword').value = '';
+        document.getElementById('newPassword').value = '';
+        alert('비밀번호가 변경되었습니다.');
+    }
+</script>
+</body>
+</html>

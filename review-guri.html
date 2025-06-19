@@ -1,0 +1,40 @@
+<!-- review-dmc.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>급하송</title>
+  <link rel="stylesheet" href="basic.css">
+  <link rel="stylesheet" href="navibar.css">
+  <link rel="stylesheet" href="write_review.css">
+</head>
+<body data-station-url="/guri">
+  <div class="main-container">
+    <!-- ...탭 메뉴... -->
+    <div class="tabs">
+      <div class="tab" onclick="location.href='section-select.html'">지도 보기</div>
+      <div class="tab active" onclick="location.href='review.html'">역 후기</div>
+      <div class="tab" onclick="location.href='favorites.html'">즐겨찾는 역</div>
+      <div class="tab" onclick="location.href='profile.html'">나의 정보</div>
+    </div>
+    <div class="container">
+      <h1 id="stationTitle">구리역 후기</h1>
+      <p class="rating">평균 평점: <span id="avgRating">0.0</span></p>
+      <div id="map"></div>
+      <div class="stars" id="starContainer">
+        <span data-value="1">★</span>
+        <span data-value="2">★</span>
+        <span data-value="3">★</span>
+        <span data-value="4">★</span>
+        <span data-value="5">★</span>
+      </div>
+      <textarea id="reviewText" placeholder="후기를 작성하세요..."></textarea>
+      <button id="addReviewBtn">후기 등록</button>
+      <div class="reviews" id="reviews"></div>
+    </div>
+  </div>
+
+  <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4f4c48c1947a671f9989736da0c6770c"></script>
+  <script type="module" src="review.js"></script>
+</body>
+</html>
