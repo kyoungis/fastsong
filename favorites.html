@@ -45,6 +45,7 @@
       const favoriteStations = stations.filter(station => favorites.includes(station.name));
       renderFavoriteStations(favoriteStations);
     }
+    showFavorites();
 
     document.getElementById('searchInput').addEventListener('input', function () {
       const term = this.value.trim().toLowerCase();

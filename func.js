@@ -17,6 +17,7 @@ function renderStations(list) {
         const card = document.createElement('div');
         card.className = 'card';
         card.dataset.station = station.name;
+        card.dataset.stationUrl = station.url;
         card.innerHTML = `
             <a href="${getStationUrl(station)}">
                 <img src="${station.img}" alt="${station.name}역" class="station-img">
@@ -83,9 +84,9 @@ function updateHearts() {
 function updateRatings() {
     const reviews = JSON.parse(localStorage.getItem('reviews')) || {};
     document.querySelectorAll('.card').forEach(card => {
-        const name = card.dataset.station;
+        const url = card.dataset.stationUrl;
         const rateEl = card.querySelector('.rating span');
-        const arr = reviews[name] || [];
+        const arr = reviews[url] || [];
         rateEl.textContent = arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1) : '0.0';
     });
 }

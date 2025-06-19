@@ -35,7 +35,6 @@ body {
 }
 
 .main-title1 {
-  font-family: Arial, sans-serif, 'Malgun Gothic';
   font-weight: bold;
   font-size: 5rem;
   color: #333;
@@ -45,7 +44,6 @@ body {
 }
 
 .main-title2 {
-  font-family: Arial, sans-serif, 'Malgun Gothic';
   font-weight: bold;
   font-size: 4rem;
   color: #333;
@@ -62,7 +60,25 @@ body {
   .main-container {
     background-repeat: no-repeat;
   }
+  .main-title1 {
+    font-family: Arial, sans-serif, 'Malgun Gothic';
+    font-weight: bold;
+    font-size: 5rem;
+    color: #333;
+    margin-top: 220px;
+    margin-bottom: 30px;
+    text-shadow: 0px 0px 10px rgba(181, 181, 181, 0.5);
+  }
+
   .main-title2 {
+    font-size: 4rem;
+    color: #333;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-shadow: 0px 0px 10px rgba(181, 181, 181, 0.5);
+  }
+  .main-title2 {
+    font-size: 2rem;
     margin-top: 10px;
     margin-bottom: 30px;
   }   
